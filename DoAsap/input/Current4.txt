@@ -15,7 +15,7 @@ ZZ/PLK2223334;;;;zakonczone;Anteny - aktualizacja cennika;Kathrein;AntenyKathrei
 ZZ/PLI0005841;PZ/0003335577;WP/PLI0006677;;aktywne;Kijek i siekierka od Wójka;Wójek;Siekierka201812;z wolnej ręki;PLI;01.12.2018 at 10:11:52;17.12.2018;17.12.2018;;
 ZZ/CPO0005922;PZ/0004445555;;;aktywne;Narzędzia do wymiany uszczekl na rurze kanalizacyjnej w kuchni;Tulex;Tools_Toolex201812;z wolnej ręki;CPO;17.12.2018 at 10:27:47;18.10.2018;;;
 ZZ/PLK0005922;;;;aktywne;Platforma do zarządzania platformami;Ericsson;Platforma201812;inne;PLK;17.12.2018;;;;
-ZZ/PLI0005869;;;;aktywne;Proszę o przeprowadzenie postepowania przetargowego na wyłonienie dostawcy sprzętu DWDM na potrzeby realizacji Alien Lambda.;;DWDM_2018;przetarg;PLI;18.12.2018;;;;
+ZZ/PLI0005869;;;;aktywne;Proszę o przeprowadzenie postepowania przetargowego na wyłonienie dostawcy sprzętu DWDM na potrzeby realizacji Alien Lambda.;;DWDM_2018;przetarg;PLI;17.12.2018;;;;
 ZZ/PLI0005885;;;;zawieszone;Okablowanie dla instalacji na Stadionie Narodowym;;OkablowanieNarodowy201812;przetarg;PLI;18.12.2018;;;;
 ZZ/PLK0005886;;;;aktywne;aaa;;test3;z wolnej ręki;PLK;18.12.2018;;;;
 ZZ/PLK0003336;;;;aktywne;Rozbudowa instalacji na Stadionie Narodowym;;test5;przetarg;PLK;18.12.2018;;;;
@@ -38,3 +38,4 @@ ZZ/CPO0006343;;;;aktywne;gablota na medale;;gablota na medale;z wolnej ręki;CPO
 ZZ/PLI0005869;;;;aktywne;Drugi, rezerwowy dostawca DWDM;;DWDM rugi dostawca;przetarg;PLI;05.01.2019;;;;
 ZZ/CPO0000102;;;;aktywne;t1;aa;aa;z wolnej ręki;CPO;09.03.2019;;;;
 ZZ/CPO0003344;;;;aktywne;asd ssd csd węgiel i koks;asd;asd;inne;CPO;10.03.2019;;;;
+ZZ/CPO0004433;PZ/0000005551;WP/CPO0004321;;zakonczone;Flamastry i kolorowanki dla działu księgowości;Papiernik na rogu;Flamastry kolorowanki;z wolnej ręki;CPO;07.04.2019;07.04.2019;07.04.2019;;
