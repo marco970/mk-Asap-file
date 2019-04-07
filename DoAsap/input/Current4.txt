@@ -37,4 +37,4 @@ ZZ/PLK0005993;PZ/0000009876;;;aktywne;aaa bbb ccc mmmm mmmmmmm mmmmmmmm mmmm ggg
 ZZ/CPO0006343;;;;aktywne;gablota na medale;;gablota na medale;z wolnej ręki;CPO;03.01.2019;;;;
 ZZ/PLI0005869;;;;aktywne;Drugi, rezerwowy dostawca DWDM;;DWDM rugi dostawca;przetarg;PLI;05.01.2019;;;;
 ZZ/CPO0000102;;;;aktywne;t1;aa;aa;z wolnej ręki;CPO;09.03.2019;;;;
-ZZ/CPO0003344;;;;aktywne;asd;asd;asd;inne;CPO;10.03.2019;;;;
+ZZ/CPO0003344;;;;aktywne;asd ssd csd węgiel i koks;asd;asd;inne;CPO;10.03.2019;;;;
