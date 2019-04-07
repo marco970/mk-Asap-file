@@ -38,25 +38,16 @@ public class RaportExcell {
 			"BA", "BC", "BE", "BG", "BI", "BK"
 			};
 	private DataExtractor2 de;
-	//private String kupiec;
-	
-	//String cPLK, cPLI, cCPO;
 	
 	public RaportExcell(MainTableModel model, String kupiec, int monthP, int yearP, String u, String w, String v) throws IOException	{
 		
-		
-
-		
 		this.year = yearP;
 		this.month = monthP;
-		//this.kupiec = kupiec;
 		int rowNumber = 9;
 		CalendarTest ct = new CalendarTest(year, month);
 		int dniMies = ct.getDayNo(month);
 		
 		de = new DataExtractor2(model, month+1, year, dniMies, u, w, v);
-		
-		//System.out.println("RE constr month: "+(month+1)+", year: "+year+", l. dni: "+dniMies);
 
 		HSSFWorkbook workbook = new HSSFWorkbook();
 		HSSFSheet sheet = workbook.createSheet(kupiec);
@@ -70,21 +61,16 @@ public class RaportExcell {
 		
 		cs.setFont(fontNormal);  
 		
-		//generowanie wierszy i komórek
-		
-		HSSFRow[] rowArr = new HSSFRow[rowNumber]; //robię na listach, to do wywalenia
+		HSSFRow[] rowArr = new HSSFRow[rowNumber]; 
 		HSSFCell[][] cellArr = new HSSFCell[rowNumber][dniMies*2+3];
 		
 		//wygenerowanie wierszy i komórek
 		//i - wiersze
 		//j - kolumny
-		//System.out.println(dniMies+"-"+(dniMies*2-1+3)+"-"+rowNumber);
+
 		for (int i=0; i<=rowNumber-1; i++)	{
 			rowArr[i]=sheet.createRow(i);
-			//rowArr[i].setHeightInPoints(100);
-			//System.out.print(i+"--"+rowArr[i].toString());
 			for(int j = 0; j<=dniMies*2-1+3; j++)	{
-				//System.out.println(i+"*"+j);
 				cellArr[i][j] = rowArr[i].createCell(j);
 				cellArr[i][j].setCellStyle(cs);
 			}
@@ -92,8 +78,7 @@ public class RaportExcell {
 		
 		//Fonty i style
 				HSSFFont f1 = workbook.createFont();
-					//f1.setBold(true);
-					//f1.setColor(HSSFColor.HSSFColorPredefined.RED.getIndex());  
+
 					f1.setFontHeightInPoints((short) 9);  
 					f1.setFontName("Tahoma");  
 				
@@ -197,13 +182,11 @@ public class RaportExcell {
 				cellArr[7][dniMies*2+2].setCellType(CellType.FORMULA);
 				cellArr[7][dniMies*2+2].setCellFormula(formulaSum);
 				cellArr[7][dniMies*2+2].setCellStyle(cs2);
-				//System.out.println(formulaSum);
 				
 				//generowanie pierwszych 2 kolumn
 					
 				sheet.setColumnWidth(0, 10000);
 				sheet.setColumnWidth(1, 12000);
-				//RichTextString c10 = new HSSFRichTextString("Pracownik: "+kupiec);
 				
 				rowArr[1].setHeightInPoints(30);
 				cellArr[1][0].setCellValue("Pracownik: "+kupiec);
@@ -211,9 +194,7 @@ public class RaportExcell {
 				
 				
 				rowArr[2].setHeightInPoints(25);
-				//RichTextString c20 = new HSSFRichTextString("RODZAJ USŁUGI/ ETAP POSTĘPOWANIA");
 				cellArr[2][0].setCellValue("RODZAJ USŁUGI/ ETAP POSTĘPOWANIA");
-				//RichTextString c21 = new HSSFRichTextString("ZAKRES ETAPU POSTĘPOWANIA");
 				cellArr[2][1].setCellValue("ZAKRES ETAPU POSTĘPOWANIA");
 				cellArr[2][0].setCellStyle(cs3);
 				cellArr[2][1].setCellStyle(cs3);
@@ -263,9 +244,7 @@ public class RaportExcell {
 				cellArr[7][1].setCellStyle(cs3);
 				
 				//generowanie zawartości
-				//(int j = 2; j<=dniMies*2-1+2; j=j+2)
-				
-				//System.out.println("RE  dniMies "+dniMies +" y: "+ year);
+
 			for (int i = 2; i<=dniMies*2-1+2; i=i+2)	{
 				String[] zz = new String[de.getExRow("ZZ").length];
 				String[] pz = new String[de.getExRow("PZ").length];
@@ -302,7 +281,6 @@ public class RaportExcell {
 			File file = new File(defaultPath+kupiec+"_TimeSheet_"+(month+1)+"_"+year+"_"+"_Raport.xls");
 			FileOutputStream fos = new FileOutputStream(file);
 				workbook.write(fos);
-				//System.out.println(kupiec+"_TimeSheet_"+(month+1)+"_"+year+"_"+"_Raport.xls");
 				
 				workbook.close();	
 				fos.close();

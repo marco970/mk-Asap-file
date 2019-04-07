@@ -34,13 +34,10 @@ public class OpForm2 implements ActionListener, FocusListener {
 	
 	private int rowNr;
 	
-	//private String[] validateArr;
 	private Component[] tfAll;
 	
-	//private ErrMessage errMessage;
-	
 	private JFrame opForm;
-	private ArrayList<Component> listaComp = new ArrayList<Component>();		//out - jednak nie potrzeba, stara konstrukcja działa ok
+	private ArrayList<Component> listaComp = new ArrayList<Component>();
 	
 	///
 	JComboBox<String> statusPole;
@@ -59,12 +56,6 @@ public class OpForm2 implements ActionListener, FocusListener {
 	private JButton btnNext;
 
 	public OpForm2(String nazwa, int rowNo, MainTableModel mod)  {
-		
-		
-		/*errMessage = new ErrMessage(mod); //out
-		String[] errMessageStr = errMessage.getErrMessage();	//out
-		errMessage.addPropertyChangeListener(errMS); //potrzebne?//out
-		*/
 				
 		this.model = mod;
 		this.rowNr = rowNo;
@@ -72,7 +63,7 @@ public class OpForm2 implements ActionListener, FocusListener {
 		//this.validateArr = new String[model.getColumnCount()-model.getNumberDs()]; //out
 		
 		//ramka
-		//-----------to do wyjebki 
+
 		opForm = new JFrame();
 		opForm.setTitle(nazwa);
 		opForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,12 +73,11 @@ public class OpForm2 implements ActionListener, FocusListener {
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		opForm.setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow]", "[grow][][]"));//różnica
-		//-------------dotąd
-		panel = new JPanel();	//tu metoda klasy dziedziczonej
+		contentPane.setLayout(new MigLayout("", "[grow]", "[grow][][]"));
+
+		panel = new JPanel();
 		contentPane.add(panel, "cell 0 0,grow");
 
-		//definicje od rysunku-----------------------
 		JLabel[] nazwaPola = new JLabel[colCount];
 		
 		Component[] a = new Component[colCount];
@@ -95,15 +85,13 @@ public class OpForm2 implements ActionListener, FocusListener {
 		String migLayRowNo = "";
 		String[] targetNazwaPola = new String[colCount];
 		String[] targetField = new String[colCount];
-		//String[] targetErrMessage = new String[colCount];	//out
+
 		for (int i = 0; i<=colCount-1; i++)	{
 			migLayRowNo = migLayRowNo+"[]";
 			targetNazwaPola[i] = "cell 0 "+ i;
 			targetField[i] = "cell 1 "+ i;
-			//targetErrMessage[i] = "cell 2 "+ i; //out
+
 		}
-		//JLabel[] errMessage = errMS.getErrMessageLab();	//out
-		
 		
 		//rysujemy-----------------------------------
 		panel.setLayout(new MigLayout("", "[][][]", "[][][]"));
@@ -196,7 +184,7 @@ public class OpForm2 implements ActionListener, FocusListener {
 						( (Component) a[i]).addFocusListener(this);
 					}
 				}
-				//System.out.println("asd "+i +"  -> "+b[i].toString());
+
 			}
 			else if (i==5)	{
 				JTextArea a5 = new JTextArea(5, 15);
@@ -259,9 +247,6 @@ public class OpForm2 implements ActionListener, FocusListener {
 		contentPane.add(btnNext, "cell 0 2");
 		contentPane.add(btnSave, "cell 0 2");
 	
-		//dalej
-		//nowe etykiety błędów-----------
-	
 	}//koniec konstruktora
 
 	public Object[] DsIterator(String dateString, Object[] savedRow, int liczbaWierszy, int liczbaDs, int currRow)	{
@@ -302,7 +287,6 @@ public class OpForm2 implements ActionListener, FocusListener {
 					} else if (i == 0 || i == 9) {
 						rowAll[i] = ((JLabel) tfAll[i]).getText();
 					} else if (i > 0 && i <= 3) {
-						//System.out.println("nr: "+i+"; "+ model.doesElExists(rowNr, i)+" -- "+ model.getValueAt(rowNr, i));
 						if (model.doesElExists(rowNr, i))
 							rowAll[i] = ((JLabel) tfAll[i]).getText();
 						else
@@ -318,24 +302,20 @@ public class OpForm2 implements ActionListener, FocusListener {
 				} else {
 					savedRow[i] = model.getValueAt(rowNr, i);
 				}
-				//System.out.println(i+" ---- "+savedRow[i]+" "+model.getValueAt(rowNr, i) );
 
 			}
 			savedRow = DsIterator(dateString, savedRow, liczbaWierszy, liczbaDs, rowNr);
-			//EoDS
+
 			//Zmiana folderu
 			FolderCreator folder = new FolderCreator();
 			String numerZZ = model.getValueAt(rowNr, 0).toString().substring(6);
 			String myPath = "";
-			//System.out.println();
-			//System.out.println("Zmiana Statusu z: " + model.getValueAt(rowNr, 4) + " na: " + savedRow[4]);
+
 			if (savedRow[4].equals("zakonczone") && !model.getValueAt(rowNr, 4).equals("zakonczone")) {
-				//System.out.println("Zmieniamy lokalizację folderu z " + folder.getAktywne());
 				myPath = folder.getDefaultPath() + folder.getAktywne();
 				findMoveFolder(numerZZ, myPath, true);
 			} 
 			else if (savedRow[4].equals("aktywne") && model.getValueAt(rowNr, 4).equals("zakonczone")) {
-				//System.out.println("Zmieniamy lokalizację folderu z " + folder.getZamkniete());
 				myPath = folder.getDefaultPath() + folder.getZamkniete();
 				findMoveFolder(numerZZ, myPath, false);
 			}
@@ -349,20 +329,14 @@ public class OpForm2 implements ActionListener, FocusListener {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			opForm.dispose(); //to jakimś cudem działa dobrze
+			opForm.dispose();
 		}
-		//System.out.println(e.getActionCommand());
 	}//koniec metody actionPerformed
 	public void findMoveFolder(String numerZZ, String myPath, boolean tam)	{
 		if (myPath.length()>0)	{
-			//System.out.println(myPath + " -- " + myPath.length());
-			//int l = myPath.length();
-			//String[] fragmentZZ = new String[myPath.length()];
 			File[] directories = new File(myPath).listFiles(File::isDirectory);
-			//System.out.println(" --> " + directories.length);
 			if (directories.length > 0) {
 				for (int i = 0; i <= directories.length - 1; i++) {
-					//System.out.println(directories[i].toString().substring(myPath.length(), +myPath.length() + 7)+" ---> "+numerZZ);
 					if (directories[i].toString().substring(myPath.length(), +myPath.length() + 7).equals(numerZZ))	{
 						new FolderCreator().moveFolder(directories[i].toString().substring(myPath.length()), tam);
 					}
@@ -388,36 +362,23 @@ public class OpForm2 implements ActionListener, FocusListener {
 	}
 
 	@Override
-	public void focusLost(FocusEvent e) {	/*
-											/-------> kod tej metody do poprawy. Zmiana konstruktorów SingleFieldValidator + setter na 2 pierwsze parametry
-											 * a moze wystarczy jedynie setter a konstruktor zostawić....
-											*/
-
+	public void focusLost(FocusEvent e) {	
 		SingleFieldValidator valCheck = new SingleFieldValidator();
 
 		if (((JTextComponent) e.getSource()).getName().equals("PZ")) {
 			SingleFieldValidator zzVal = new SingleFieldValidator("PZ", ((JTextComponent) e.getSource()).getText(), model, rowNr, this);
-			//System.out.println(zzVal.getErrMessage()+" 1");
 			errPZLab.setText(zzVal.getErrMessage());
-			//errPZLab.setEnabled(true);
-			//System.out.println(errPZLab.getText()+" 2");
 			valCheck = zzVal;
 		}
 		else if (((JTextComponent) e.getSource()).getName().equals("WP")) {
 			SingleFieldValidator zzVal = new SingleFieldValidator("WP", ((JTextComponent) e.getSource()).getText(), model, rowNr, this);
-			//System.out.println(zzVal.getErrMessage()+" 1");
 			errWPLab.setText(zzVal.getErrMessage());
-			//errWPLab.setEnabled(true);
-			//System.out.println(errWPLab.getText()+" 2");
 			valCheck = zzVal;
 		}
 		else if (((JTextComponent) e.getSource()).getName().equals("DK")) 
 		{
 			SingleFieldValidator zzVal = new SingleFieldValidator("DK", ((JTextComponent) e.getSource()).getText(), model, rowNr, this);
-			//System.out.println(zzVal.getErrMessage()+" 1");
 			errDKLab.setText(zzVal.getErrMessage());
-			//errDKLab.setEnabled(true);
-			//System.out.println(errDKLab.getText()+" 2");
 			valCheck = zzVal;
 		}
 		if(!valCheck.getValidationResult())	{
@@ -425,12 +386,7 @@ public class OpForm2 implements ActionListener, FocusListener {
 			btnNext.setEnabled(true);
 		}
 		else {
-			/*
-			 * tu trzebaby sprawdzić, czy zmieniły się dane we wszysktich okienkach - na razie mi się nie chce
-			if (!((JTextComponent) e.getSource()).getText().equals(""))	{
-				btnSave.setEnabled(true);
-			}
-			*/
+
 			btnSave.setEnabled(true);
 			btnNext.setEnabled(false);
 		}

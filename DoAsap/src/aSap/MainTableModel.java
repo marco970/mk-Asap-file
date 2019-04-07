@@ -15,19 +15,9 @@ public class MainTableModel extends AbstractTableModel {
 	private static String[] nazwyKolumn = {"ZZ", "PZ", "WP", "DK", "Status", 
 			"Przemiot Zakupu", "Dostawca", "Nazwa", "Tryb postępowania", "Spółka", 
 			"dsZZ", "dsPZ", "dsWP", "dsDK" };
-	/*
-	 * Walidacja
-	 */
-	//private boolean[] notNull = 
-	//private String[] ZZ = {"notNull"};
-
-	//private String current = "F:/aSapData/Current3.txt";
-	//private String current = "C:/Users/Lappo/git/AsapJava/aSapData/Current3.txt";
-	private String current = "input/Current4.txt";
-	//private String current = "C:/Users/marcin.kuciak/Documents/workIT_projects/doAsap/aSapData/Current3.txt";
 	
-	private Object[][] dane = null;
-	
+	private String current = "input/Current4.txt";	
+	private Object[][] dane = null;	
 	public MainTableModel() 	{
 		try {
 			this.dane=readFile(current);
@@ -36,7 +26,6 @@ public class MainTableModel extends AbstractTableModel {
 		}
 	}
 	//----------metody--
-
 	public String getPath()	{
 		return current;
 	}
@@ -45,9 +34,7 @@ public class MainTableModel extends AbstractTableModel {
 	}
 	public Object[] getRowData(int i)	{
 		return dane[i];
-		
 	}
-
 	public String[] getColumns()	{
 		return nazwyKolumn ;
 	}
@@ -76,10 +63,8 @@ public class MainTableModel extends AbstractTableModel {
 			if(nazwyKolumn[i].equals(ColName))	{
 				j=i;
 			}
-
 		}
 		return j;
-		
 	}
 	
 	@Override
@@ -136,7 +121,6 @@ public class MainTableModel extends AbstractTableModel {
 	}
 	public void recordAdd(Object[] savedRow) {	//--zapis do DB
 		int n = getRowCount()+1;
-		//System.out.println("recordAdd, n: "+n + " ilość wierszy :"+getRowCount());
 		Object[][] daneUpd = new Object[n][nazwyKolumn.length];
 		for (int i = 0; i<= n-1; i++)	{
 			if (i<=n-2) daneUpd[i]=dane[i];
@@ -151,7 +135,6 @@ public class MainTableModel extends AbstractTableModel {
 		for (int i = 0; i<=getRowCount()-1; i++)	{
 			rowList.add(dane[i]);
 		}
-		//System.out.println("recordUpdated rowNr: "+rowNr + " ilość wierszy :"+getRowCount());
 		rowList.set(rowNr, savedRow);
 		Object[][] daneUpd = new Object[rowList.size()][nazwyKolumn.length];
 		int j = 0;

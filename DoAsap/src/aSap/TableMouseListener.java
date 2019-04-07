@@ -34,7 +34,6 @@ public class TableMouseListener extends MouseAdapter  {
        
        if (status.equals("aktywne"))	{
     	   pmb.setPopupStr(popupStr2);
-    	   //System.out.println("TML mousePressed - pmb change");
        }
        else if (status.equals("zawieszone")) {
     	   pmb.setPopupStr(popupStr3);

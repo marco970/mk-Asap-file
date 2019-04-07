@@ -40,16 +40,8 @@ public class DateChangeForm2  implements ActionListener, FocusListener  {
 	
 	private boolean isErr;
 	
-	//private Compare comp = new Compare();
-
-
-
-	/**
-	 * Create the frame.
-	 */
 	public DateChangeForm2(MainTableModel model, int rowNr) {
-		
-		
+				
 		dcForm = new JFrame();
 		this.model = model;
 		this.rowNr = rowNr;

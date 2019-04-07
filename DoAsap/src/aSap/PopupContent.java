@@ -25,7 +25,6 @@ public class PopupContent extends JPopupMenu implements PropertyChangeListener, 
 		lista=list;
 		data = dane;
 		frame = fram;
-		//System.out.println("pc kontruktor - jestem");
 		String[] popupStr = {"modyfikacja", "zmień daty", "zakończ postępowanie", "zawieś postepowanie"};
 		this.popupStr = popupStr;
 		doMassAddMenu(this, popupStr);		
@@ -59,16 +58,13 @@ public class PopupContent extends JPopupMenu implements PropertyChangeListener, 
 		String myPath = folder.getDefaultPath() + folder.getAktywne();
 		
 		File[] directories = new File(myPath).listFiles(File::isDirectory);
-		//System.out.println("path: "+myPath+" ntZZ: "+numerZZ+" dierLength: "+directories.length);
 		
 		if (myPath.length() > 0) {		//
 			for (int i = 0; i <= directories.length - 1; i++) {
-				//System.out.println(directories[i].toString().substring(myPath.length(), +myPath.length() + 7)+" ---> "+numerZZ);
 				String x = "";
 				if (directories[i].toString().substring(myPath.length(), +myPath.length() + 7).equals(numerZZ))	{
 					path = directories[i].toString().substring(myPath.length());
 				}
-				//System.out.println(directories[i].toString().substring(myPath.length(), +myPath.length() + 7)+" ---> "+numerZZ+ " "+x );
 			}
 		}
 		
@@ -90,14 +86,10 @@ public class PopupContent extends JPopupMenu implements PropertyChangeListener, 
 				JOptionPane.showMessageDialog(frame, "Nie można zakończyć tego postępowania"); //tu zrobić ostrzeżenie i tak/nie
 			}
 			else {
-				//System.out.println("kończę");//
 				data.cellUpdate("zakonczone", realSelectedRow, 4);
-				//System.out.println("getFolder: "+getFolder(realSelectedRow));
 				try {
 					new Zapis(data);
 					new FolderCreator().moveFolder(getFolder(realSelectedRow), true);
-					//tu uruchamiam metodę zmiany folderu
-					//aby uzyskać parametr muszę stworzyć metodę
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -105,8 +97,6 @@ public class PopupContent extends JPopupMenu implements PropertyChangeListener, 
 		
 		}
 		if (u.equals("zmień daty"))	{
-			//System.out.println("Zmiana dat");
-			//new DataChangeForm(data, lista.getSelectedRow());
 			new DateChangeForm2(data, lista.convertRowIndexToModel(lista.getSelectedRow()));
 		}
 		if (u.equals("zawieś postepowanie"))	{
@@ -117,7 +107,6 @@ public class PopupContent extends JPopupMenu implements PropertyChangeListener, 
 				try {
 					new Zapis(data);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -129,14 +118,12 @@ public class PopupContent extends JPopupMenu implements PropertyChangeListener, 
 			}
 		}
 		if (u.equals("odwieś postępowanie"))	{
-			//int selectedRow = lista.getSelectedRow();
 			int realSelectedRow = lista.convertRowIndexToModel(lista.getSelectedRow());
 			if (data.getValueAt(realSelectedRow, 4).equals("zakonczone")) {
 				data.cellUpdate("aktywne", realSelectedRow, 4);
 				try {
 					new Zapis(data);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

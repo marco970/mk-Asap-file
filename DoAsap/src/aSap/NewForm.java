@@ -72,7 +72,6 @@ public class NewForm implements  ActionListener, FocusListener {
 		//przyciski
 		btnSave.addActionListener(this);
 		btnCancel.addActionListener(this);
-		//btnNext.setText("Dalej");
 		btnNext.addActionListener(this);
 		btnBack.addActionListener(this);
 		//pole ZZ
@@ -92,10 +91,8 @@ public class NewForm implements  ActionListener, FocusListener {
 		panel.add(title, "dock north");
 		panel.add(labZZ, "cell 0 1");
 		panel.add(poleZZ, "cell 1 1");
-		//panel.add(poleZZlab, "cell 1 1");
 		panel.add(errZZLab, "cell 2 1");
-		
-		//tworzenie HashMapy - o ile będzie potrzebna
+
 		//tworzenie pozostałych elementów
 		
 		//dodać status 
@@ -178,7 +175,6 @@ public class NewForm implements  ActionListener, FocusListener {
 		SingleFieldValidator zzVal = new SingleFieldValidator("ZZ", gotZZ, model, rowNr);
 		errZZLab.setText(zzVal.getErrMessage());
 		String spolka = zzVal.getSpolka();
-		///System.out.println("*** "+spolka);
 		if (!zzVal.getValidationResult())	{//jeśli walidacja negatywna
 			btnNext.setEnabled(false);
 			poleZZ.requestFocus();

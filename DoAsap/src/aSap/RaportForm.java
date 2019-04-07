@@ -145,8 +145,7 @@ public class RaportForm extends RawForm implements ActionListener {
 			
 			String a = comboBoxYear.getSelectedItem().toString();
 			int y = Integer.parseInt(a);
-			//System.out.println(((monthsList.indexOf(comboBoxMonth.getSelectedItem()))+1)+" "+comboBoxYear.getSelectedItem());// do wywalenia
-			//System.out.println(u+w+v); //do wywalenia
+
 			try {
 				new RaportExcell(model , "Marcin Kuciak", monthsList.indexOf(comboBoxMonth.getSelectedItem()), y, u, w, v);
 			} catch (IOException e1) {

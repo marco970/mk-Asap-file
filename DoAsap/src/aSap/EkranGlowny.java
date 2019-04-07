@@ -31,9 +31,7 @@ public class EkranGlowny implements ActionListener {
 	private JPopupMenu popupMenu;
 	private JTable lista;
 	JMenu raport=null;  
-	//private ErrMessage errMessage;
 
-	//do menu - string pierwszy nazwa menu, kolejne - nazwy MenuItemów
 	String[] start = {"Start", "Nowe postępowanie", "Raport miesięczny", "Exit"};
 	String[] sort = {"Sort","Nieaktywne", "Aktywne","Zawieszone", "Zakończone", "Wszystkie"};
 	String[] toDo = {"ToDo", "Lista", "Notatki"};
@@ -69,9 +67,7 @@ public class EkranGlowny implements ActionListener {
 		
 		lista = new JTable(dane);
 		//sortowanie i filtrowanie
-		//lista.setAutoCreateRowSorter(true);			//sortowanie najprościej
 		sorter = new TableRowSorter<MainTableModel>(dane);
-		//compare(dane.getValueAt(12, 11), dane.getValueAt(5, 11));
 		sorter.setComparator(0, new CompareZZ());
 		sorter.setComparator(2, new CompareZZ());
 		sorter.setComparator(3, new CompareZZ());
@@ -99,19 +95,12 @@ public class EkranGlowny implements ActionListener {
 		
 		menuBar = new JMenuBar();
 		
-		/**
-		 * To poniżej to jest do podmenu, żeby wygenerować raport. 
-		 * Moje metody doMassAddMenu niestety nie przewidują podmenu i to podmenu zostało zrobione chujowo
-		 * metoda poowinna być bardziej uniwersalna, ta jest zrobiona pod konkretną pozycję
-		 * To powinno być poprawione w kolejnych wersjach.
-		 */
-		
 		doMassAddMenu(menuBar, start);
 		doMassAddMenu(menuBar, sort);
 		//doMassAddMenu(menuBar, toDo);
 		//doMassAddMenu(menuBar, notatki);
 
-		eg.setJMenuBar(menuBar); // f - oznacza obiekt typu JFrame
+		eg.setJMenuBar(menuBar);
 		
 		PopupMenuBean pmb = new PopupMenuBean(popupStr);
 		
@@ -128,19 +117,7 @@ public class EkranGlowny implements ActionListener {
 		eg.setVisible(true);
 
 	}
-	public void setPopupContent(String[] s)	{		//do wywalenia
-		popupStr = s;
-	}
-	public void doMassAddMenu(JPopupMenu popup, String...args)	{ //metoda z Popup do wywalenia z tej klasy
-		//JMenu menu = new JMenu(args[0]);
-		//popup.add(menu);
-		for (int i =0; i<=args.length-1; i++)	{
-			JMenuItem menuItem = mi(args[i]);
-			
-			popup.add(menuItem);
-			//menuItem.addActionListener(this);
-		}
-	}
+
 	public void doMassAddMenu(JMenuBar mb, String...args)	{
 		JMenu menu = new JMenu(args[0]);
 		mb.add(menu);
@@ -148,11 +125,10 @@ public class EkranGlowny implements ActionListener {
 
 				JMenuItem menuItem = mi(args[i]);
 				menu.add(menuItem);
-	
 		}
 	}
 	public JMenuItem mi(String str)	{
-		//Color col = colors.get(str.substring(1));
+
 		JMenuItem mi = new JMenuItem(str);
 		mi.addActionListener(this);	
 		mi.setActionCommand(str);
@@ -184,29 +160,22 @@ public class EkranGlowny implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		String u = e.getActionCommand();
-		
-		//System.out.println(u);
 
 		if (u.equals(start[3]))	{
 			System.exit(0);
 		}
-		//ErrMessageShow errMS = new ErrMessageShow(data); 		//do wywalenia?
 		if (u.equals(start[1]))	{
 			new NewForm(data.getRowCount()+1, data);
 		}
 		if (u.equals(start[2])){
-			//System.out.println(u+"--"+Arrays.asList(nazwaMies).indexOf(u)+"--"+q.toString());
 			new RaportForm(data);
 			
 		}
 		if (u.equals(sort[1]))	{
-			//System.out.println("sort teraz "+u);
 		    filter = new RowFilter<Object, Object>() {
 			      public boolean include(Entry<?, ?> entry) {
 			        String status = (String) entry.getValue(4);
-			        //System.out.println("include()= " +status+ ("".equals(status) || status == null));
 			        return !("aktywne".equals(status));
-			        //return true;
 			      }
 			    };
 				sorter.setRowFilter(filter);
@@ -214,13 +183,10 @@ public class EkranGlowny implements ActionListener {
 
 		}
 		if (u.equals(sort[2]))	{
-			//System.out.println("sort teraz "+u);
 		    filter = new RowFilter<Object, Object>() {
 			      public boolean include(Entry<?, ?> entry) {
 			        String status = (String) entry.getValue(4);
-			        //System.out.println("include()= " +status+ ("".equals(status) || status == null));
 			        return ("aktywne".equals(status));
-			        //return true;
 			      }
 			    };
 				sorter.setRowFilter(filter);
@@ -228,13 +194,10 @@ public class EkranGlowny implements ActionListener {
 
 		}
 		if (u.equals(sort[3]))	{
-			//System.out.println("sort teraz "+u);
 		    filter = new RowFilter<Object, Object>() {
 			      public boolean include(Entry<?, ?> entry) {
 			        String status = (String) entry.getValue(4);
-			        //System.out.println("include()= " +status+ ("".equals(status) || status == null));
 			        return ("zawieszone".equals(status));
-			        //return true;
 			      }
 			    };
 				sorter.setRowFilter(filter);
@@ -242,13 +205,10 @@ public class EkranGlowny implements ActionListener {
 
 		}
 		if (u.equals(sort[4]))	{
-			//System.out.println("sort teraz "+u);
 		    filter = new RowFilter<Object, Object>() {
 			      public boolean include(Entry<?, ?> entry) {
 			        String status = (String) entry.getValue(4);
-			        //System.out.println("include()= " +status+ ("".equals(status) || status == null));
 			        return ("zakonczone".equals(status));
-			        //return true;
 			      }
 			    };
 				sorter.setRowFilter(filter);
@@ -256,64 +216,14 @@ public class EkranGlowny implements ActionListener {
 
 		}
 		if (u.equals(sort[5]))	{
-			//System.out.println("sort teraz "+u);
 		    filter = new RowFilter<Object, Object>() {
 			      public boolean include(Entry<?, ?> entry) {
 			        String status = (String) entry.getValue(4);
-			        //System.out.println("include()= " +status+ ("".equals(status) || status == null));
 			        return (true);
-			        //return true;
 			      }
 			    };
 				sorter.setRowFilter(filter);
 				lista.setRowSorter(sorter);
-
-		}
-		/*
-		if (u.equals("modyfikacja"))	{	//popup do wywalenia - będzie w PopupContent
-			int selectedRow = lista.getSelectedRow();
-			int realSelectedRow = lista.convertRowIndexToModel(selectedRow);
-
-			new OpForm2("Edycja postępowania", realSelectedRow, data);
-			
-			//System.out.println(" to ma być " + popupStr[0] + lista.getSelectedRow() );
-		}
-		//okFo.addChangeListener(this); //czy to w ogóle jest potrzebne?
-		if (u.equals("zakończ postępowanie"))	{
-			//spr czy jest WP?
-			int selectedRow = lista.getSelectedRow();
-			int realSelectedRow = lista.convertRowIndexToModel(selectedRow);
-			if (data.getValueAt(realSelectedRow, 2)==null || "".equals(data.getValueAt(realSelectedRow, 2)))	{
-				JOptionPane.showMessageDialog(eg, "Nie można zakończyć tego postępowania");
-			}
-			else {
-				//System.out.println("kończę");
-				data.cellUpdate("done", realSelectedRow, 4);
-				try {
-					new Zapis(data);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-				
-			//System.out.println(" to ma być " + popupStr[1] + lista.getSelectedRow() );
-		}
-		if (u.equals("zmień daty"))	{
-			System.out.println("daty");
-			new DataChangeForm(data, lista.getSelectedRow());
-		}
-		if (u.equals("zawieś postepowanie"))	{
-			int selectedRow = lista.getSelectedRow();
-			int realSelectedRow = lista.convertRowIndexToModel(selectedRow);
-		}
-		if (u.equals("odwieś postępowanie"))	{
-			//System.out.println(" to ma być " + popupStr[1] + lista.getSelectedRow() );
-		}
-		*/
-		
+		}	
 	}
-
-
-
 }

@@ -24,7 +24,6 @@ public class ValidatioModel {
 		try {
 			a =(String[]) getClass().getDeclaredField(name).get(this);
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		return a;			
