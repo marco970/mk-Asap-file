@@ -11,6 +11,6 @@ ZZ/PLI2233445;PZ/3334445556;WP/PLI9993332;DK/PLK2223334;open;Zakup nowych ficzer
 ZZ/CPO3334446;PZ/8888888888;;;open;TTT + ccc;aaa;ddd;z wolnej ręki;CPO;04.11.2018 at 16:52:52;09.11.2018 at 12:52:05;;;;
 ZZ/PLI3334445;PZ/2223333445;WP/PLK4445556;;open;Gary do gotowania;GaroTechnika;ZakupGarów;z wolnej ręki;;07.11.2018 at 15:25:37;09.11.2018 at 15:14:06;09.11.2018 at 15:14:06;;;
 ZZ/CPO4455667;;WP/PLI2222333;;open;Wędki karpiowe ;PolSpin;Wędki  na rybki;z wolnej ręki;CPO;09.11.2018 at 11:53:11;;09.11.2018 at 15:17:22;;;
-ZZ/PLK0003333;PZ/1111122222;WP/CPO4443333;;open;Śrubki i nakrętki;Nokia Akcesoria Oy;SuperPrzetarg;z wolnej ręki;PLK;09.11.2018 at 15:15:49;09.11.2018 at 15:16:39;09.11.2018 at 15:16:39;;;
+ZZ/PLK0003333;PZ/1111122222;WP/CPO4443333;;open;Śróbki i nakrętki;Nokia Akcesoria Oy;SuperPrzetarg;z wolnej ręki;PLK;09.11.2018 at 15:15:49;09.11.2018 at 15:16:39;09.11.2018 at 15:16:39;;;
 ZZ/PLI1231234;PZ/0000999988;WP/PLI3334444;;open;Kloacki Lego;Nokia;Klocki;inne;PLI;09.11.2018 at 15:29:55;09.11.2018 at 15:48:03;09.11.2018 at 15:48:03;;;
 ZZ/PLK2223334;;;;open;Anteny - aktualizacja cennika;Kathrein;AntenyKathrein201811;z wolnej ręki;PLK;21.11.2018 at 15:11:49;;;;;
